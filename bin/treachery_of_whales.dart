@@ -14,12 +14,10 @@ Position calculateFuel(List<int> positions) {
   for (int i = positions.reduce(min); i < positions.reduce(max); i++) {
     var totalFuelCost = 0;
     for (final position in positions) {
-      // fuel cost is equal to difference between current position and current position
       totalFuelCost += calculateTriangle((position - i).abs());
     }
     positionsList.add(Position(totalFuelCost, i));
   }
-  // Return the position with the lowest total fuel
   return positionsList.reduce((value, element) => value.totalFuel < element.totalFuel ? value : element);
 }
 
